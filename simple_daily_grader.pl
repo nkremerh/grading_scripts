@@ -49,7 +49,7 @@ foreach my $name (@names) {
 	#my $result = system("dos2unix ./$name/*; $command ./$name/$input > ./$name/output.txt");
 	my $result = system("cd $name && $command $src $input > $src.output");
 	
-	open(OUTPUT,"$src.output");
+	open(OUTPUT,"$name/$src.output") or die "Could not find output.\n";
 	foreach my $line (<OUTPUT>) {
 		chomp $line;
 		$student_answers[$i] = $line;
@@ -63,8 +63,7 @@ foreach my $name (@names) {
 			last;
 		}
 		my $curr_answer = $answers[$i];
-		if(index($answer,"$curr_answer") eq -1) {
-			print $answer . " : " . $answers[$i] . "\n";
+		if(index($answer,"$curr_answer") == -1) {
 			print "$name (INCORRECT)\n";
 			$wrong = 1;
 			last;
