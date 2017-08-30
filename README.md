@@ -7,6 +7,8 @@ The default setup for the scripts relies upon the Endlines utility:
 
 > https://github.com/mdolidon/endlines
 
+Endlines is useful for performing recursive conversion of end-of-line characters in files to the UNIX standard.
+
 To archive the previous assignment and download the latest, run:
 
 ```
