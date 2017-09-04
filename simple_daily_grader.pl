@@ -40,11 +40,12 @@ foreach my $name (@names) {
 		next;
 	}
 	if($input ne "" && -e "$input") {}
-	else {
+	elsif($input ne "") {
 		print(STDOUT "Extra input file $input does not exist.\n$name (INCORRECT)\n");
 		$wrong = 1;
 		next;
 	}
+	else {}
 
 	#my $result = system("dos2unix ./$name/*; $command ./$name/$input > ./$name/output.txt");
 	my $result = system("cd $name && $command $src $input > $src.output");
@@ -57,20 +58,26 @@ foreach my $name (@names) {
 	}
 	close(OUTPUT);
 
+	if(scalar(@student_answers) == 0) {
+		print(STDOUT "$name/$src.output is empty.\n");
+		$wrong = 1;
+		print "$name (INCORRECT)\n";
+	}
+	
 	$i = 0;
 	foreach my $answer (@student_answers) {
-		if($wrong eq 1) {
+		if($wrong == 1) {
+			print "$name (INCORRECT)\n";
 			last;
 		}
 		my $curr_answer = $answers[$i];
+		print(STDOUT "$name:\t$answer\t$curr_answer\n");
 		if(index($answer,"$curr_answer") == -1) {
-			print "$name (INCORRECT)\n";
 			$wrong = 1;
-			last;
 		}
 		$i++;
 	}
-	if($wrong eq 0) {
+	if($wrong == 0) {
 		print "$name (SUCCESS)\n";
 	}
 }
