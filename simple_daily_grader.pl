@@ -54,14 +54,18 @@ my $src = $OPT{src};
 my $key = $OPT{key};
 my $cmd = $OPT{cmd};
 my $inp = $OPT{inp};
+my $err = 0;
 
-if(!$dir) { print(STDERR "Missing --dir option.\n"); print_help(); }
-if(!$src) { print(STDERR "Missing --src option.\n"); print_help(); }
-if(!$key) { print(STDERR "Missing --key option.\n"); print_help(); }
-if(!$cmd) { print(STDERR "Missing --cmd option.\n"); print_help(); }
+if(!$dir) { print(STDERR "Missing --dir option.\n"); $err++; }
+if(!$src) { print(STDERR "Missing --src option.\n"); $err++; }
+if(!$key) { print(STDERR "Missing --key option.\n"); $err++; }
+if(!$cmd) { print(STDERR "Missing --cmd option.\n"); $err++; }
+if($err) {
+	print(STDERR "Could not find $err required arguments.\n");
+	print_help();
+}
 
 if($inp ne "") {
-	my $err = 0;
 	my @inputs = split(',', $inp);
 	foreach my $input (@inputs) {
 		if($input ne "" && -e "$input") {}
