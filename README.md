@@ -9,10 +9,16 @@ The default setup for the scripts relies upon the Endlines utility:
 
 Endlines is useful for performing recursive conversion of end-of-line characters in files to the UNIX standard.
 
-To archive the previous assignment and download the latest, run:
+To do a first-time setup of the directory structure and copy the latest assignment, run:
 
 ```
 make setup
+```
+
+To archive the previous assignment and download the latest, run:
+
+```
+make archive
 ```
 
 To perform a naive grading of an assignment, use simple_daily_grader.pl:
