@@ -100,7 +100,17 @@ foreach my $name (@names) {
 	$i = 0;
 	my @student_answers = ();
 	my $wrong = 0;
-	if( -e "$name/$src") { }
+	my $n = "Name not found on assignment.";
+	if( -e "$name/$src") { 
+		open(SUB, "$name/$src");
+		while(my $line = <SUB>) {
+    		if($line =~ m/.*Name:\s*\w+.*/) {
+				$n = "Name found on assignment.";
+				last;
+			}
+		}
+		close(SUB);
+	}
 	else {
 		print(STDOUT "File $name/$src does not exist.\n$name (INCORRECT)\n");
 		$wrong = 1;
@@ -121,13 +131,13 @@ foreach my $name (@names) {
 	if(scalar(@student_answers) == 0) {
 		print(STDOUT "$name/$src.output is empty.\n");
 		$wrong = 1;
-		print "$name (INCORRECT)\n";
+		print "$name (INCORRECT) $n\n";
 	}
 	
 	$i = 0;
 	foreach my $answer (@student_answers) {
 		if($wrong == 1) {
-			print "$name (INCORRECT)\n";
+			print "$name (INCORRECT) $n\n";
 			last;
 		}
 		my $curr_answer = $answers[$i];
@@ -138,7 +148,7 @@ foreach my $name (@names) {
 		$i++;
 	}
 	if($wrong == 0) {
-		print "$name (SUCCESS)\n";
+		print "$name (SUCCESS) $n\n";
 	}
 }
 
