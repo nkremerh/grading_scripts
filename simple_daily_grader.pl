@@ -104,7 +104,7 @@ foreach my $name (@names) {
 	if( -e "$name/$src") { 
 		open(SUB, "$name/$src");
 		while(my $line = <SUB>) {
-    		if($line =~ m/.*Name:\s*\w+.*/) {
+    		if(uc($line) =~ m/.*NAME:\s*\w+.*/) {
 				$n = "Name found on assignment.";
 				last;
 			}
