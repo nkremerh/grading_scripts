@@ -65,6 +65,15 @@ if($err) {
 	print_help();
 }
 
+my @src_split = split('/', $src);
+my $src_path = "";
+my $s_acc = 0;
+while($s_acc < scalar @src_split - 1) {
+	$src_path = $src_path . $src_split[$s_acc] . "/";
+	$s_acc++;
+}
+my $new_src = $src_split[$s_acc];
+
 if($inp ne "") {
 	my @inputs = split(',', $inp);
 	foreach my $input (@inputs) {
@@ -118,9 +127,9 @@ foreach my $name (@names) {
 	}	
 
 	#my $result = system("dos2unix ./$name/*; $cmd ./$name/$input > ./$name/output.txt");
-	my $result = system("cd $name && $cmd $src $inp > $src.output");
+	my $result = system("cd $name/$src_path && $cmd $new_src $inp > $new_src.output");
 	
-	open(OUTPUT,"$name/$src.output") or die "Could not find output.\n";
+	open(OUTPUT,"$name/$src.output") or print("Could not find output file $name/$src.output.\n$name (INCORRECT)\n");
 	foreach my $line (<OUTPUT>) {
 		chomp $line;
 		$student_answers[$i] = $line;
