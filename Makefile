@@ -2,11 +2,16 @@ all:
 	
 archive:
 	perl ./archive_assignment.pl ./curr_assignment
-	mkdir ./curr_assignment && cp -r /afs/nd.edu/coursefa.17/cse/cse30332.01/dropbox/* ./curr_assignment
-	endlines unix -r ./curr_assignment
 
 setup:
-	mkdir ./curr_assignment && mkdir ./prev_assignments && cp -r /afs/nd.edu/coursefa.17/cse/cse30332.01/dropbox/* ./curr_assignment
+	mkdir ./curr_assignment
+	mkdir ./curr_assignment/1
+	mkdir ./curr_assignment/2
+	mkdir ./prev_assignments
+
+pull:
+	cp -r /afs/nd.edu/coursesp.18/cse/cse20312.01/dropbox/* ./curr_assignment/1
+	cp -r /afs/nd.edu/coursesp.18/cse/cse20312.02/dropbox/* ./curr_assignment/2
 	endlines unix -r ./curr_assignment
 
 clean:
