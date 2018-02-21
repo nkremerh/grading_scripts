@@ -6,12 +6,6 @@ use Error qw(:try);
 use Error::Simple;
 use Getopt::Long qw(:config no_ignore_case);
 
-my $num_args = $#ARGV + 1;
-#if($num_args != 5) {
-#	print "Must specify assignment directory, assignment source file, answer key file, command to execute upon input data file, and any other input file.\nI.E. \n";
-#	exit 1;
-#}
-
 my $usage = "Simple Daily Grader Options:
 
 Required:
@@ -126,8 +120,7 @@ foreach my $name (@names) {
 		next;
 	}	
 
-	#my $result = system("dos2unix ./$name/*; $cmd ./$name/$input > ./$name/output.txt");
-	my $result = system("cd $name/$src_path && $cmd $new_src $inp > $new_src.output");
+	my $result = system("cd $name/$src_path && timeout 60 $cmd $new_src $inp > $new_src.output");
 	
 	open(OUTPUT,"$name/$src.output") or print("Could not find output file $name/$src.output.\n$name (INCORRECT)\n");
 	foreach my $line (<OUTPUT>) {
