@@ -46,14 +46,14 @@ if($err) {
     print_help();
 }
 
-my $match =~ s/^.//;
+my $match = $src;
+$match =~ s/^.//;
 
 my @names = <$dir*>;
 
 foreach my $name (@names) {
 	my @inner_dir = <$name/*>;
 	foreach my $d (@inner_dir) {
-		print(STDERR "$d\n");
 		if($d =~ m/.*$match.*/ and $d ne "$name/$src") {
 			print(STDERR "Match found.\n");
 			system("mv $d $name/$src");
