@@ -12,7 +12,6 @@ setup:
 pull:
 	cp -r /afs/nd.edu/coursesp.18/cse/cse20312.01/dropbox/* ./curr_assignment/1
 	cp -r /afs/nd.edu/coursesp.18/cse/cse20312.02/dropbox/* ./curr_assignment/2
-	endlines unix -r ./curr_assignment
 
 clean:
 	rm -rf ./curr_assignment ./prev_assignments

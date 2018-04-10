@@ -120,7 +120,7 @@ foreach my $name (@names) {
 		next;
 	}	
 
-	my $result = system("cd $name/$src_path && timeout 60 $cmd $new_src $inp > $new_src.output");
+	my $result = system("cd $name/$src_path && endlines unix -r ./* && timeout 60 $cmd $new_src $inp > $new_src.output");
 	
 	open(OUTPUT,"$name/$src.output") or print("Could not find output file $name/$src.output.\n$name (INCORRECT)\n");
 	foreach my $line (<OUTPUT>) {

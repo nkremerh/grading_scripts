@@ -68,7 +68,7 @@ foreach my $name (@names) {
 		next;
 	}	
 
-	my $result = system("cp -r ~/data_structures/public_code/challenge-code/common $name && cd $name/$src && timeout 60 $cmd");
+	my $result = system("cp -r ~/data_structures/public_code/challenge-code/common $name && cd $name/$src && endlines unix -r ./* && timeout 60 $cmd");
 	if($result) {
 		print(STDOUT "Encountered error while running $just_name\'s code.\n\n");
 	}
