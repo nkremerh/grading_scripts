@@ -7,7 +7,9 @@ The default setup for the scripts relies upon the Endlines utility:
 
 > https://github.com/mdolidon/endlines
 
-Endlines is useful for performing recursive conversion of end-of-line characters in files to the UNIX standard. Before running the grading scripts, please make sure you add endlines to your path.
+Endlines is useful for performing recursive conversion of end-of-line characters in files to the UNIX standard.
+
+Before running the grading scripts, please make sure you add endlines to your path.
 
 To do a first-time setup of the directory structure, run:
 
@@ -33,7 +35,9 @@ To perform a naive grading of an assignment, use simple_grader.pl:
 perl simple_grader.pl --help
 ```
 
-There are a few required options for the daily grader. These are the directory to search for assignment, the soure file to run, and the command needed to execute it. Often times, the command to test student code is the invocation of a Makefile. Here is an example invocation:
+There are a few required options for the grader. These are: the directory to search for assignments, the soure file to run, and the command needed to execute it.
+
+Often times, the command to test student code is the invocation of a Makefile. Here is an example invocation:
 
 ```
 perl simple_grader.pl --dir curr_assignment --src regex_primer/homework.sed --cmd "make test"
