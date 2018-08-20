@@ -18,7 +18,7 @@ Optional:
 
 Example Usage:
 
-	perl simple_challenge_grader.pl --dir ./curr_assignment/1 --src challenge01 --cmd \"make test\"
+	perl simple_grader.pl --dir ./curr_assignment --src challenge01 --cmd \"make test\"
 
 ";
 
@@ -68,7 +68,7 @@ foreach my $name (@names) {
 		next;
 	}	
 
-	my $result = system("cp -r ~/data_structures/public_code/challenge-code/common $name && cd $name/$src && endlines unix -r ./* && timeout 60 $cmd");
+	my $result = system("cd $name/$src && endlines unix -r ./* && timeout 60 $cmd");
 	if($result) {
 		print(STDOUT "Encountered error while running $just_name\'s code.\n\n");
 	}

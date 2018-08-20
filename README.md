@@ -7,7 +7,7 @@ The default setup for the scripts relies upon the Endlines utility:
 
 > https://github.com/mdolidon/endlines
 
-Endlines is useful for performing recursive conversion of end-of-line characters in files to the UNIX standard.
+Endlines is useful for performing recursive conversion of end-of-line characters in files to the UNIX standard. Before running the grading scripts, please make sure you add endlines to your path.
 
 To do a first-time setup of the directory structure, run:
 

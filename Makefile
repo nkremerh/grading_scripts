@@ -5,13 +5,11 @@ archive:
 
 setup:
 	mkdir ./curr_assignment
-	mkdir ./curr_assignment/1
-	mkdir ./curr_assignment/2
+	mkdir ./curr_assignment
 	mkdir ./prev_assignments
 
 pull:
-	cp -r /afs/nd.edu/coursesp.18/cse/cse20312.01/dropbox/* ./curr_assignment/1
-	cp -r /afs/nd.edu/coursesp.18/cse/cse20312.02/dropbox/* ./curr_assignment/2
+	cp -r /afs/nd.edu/coursefa.18/cse/cse30332.01/dropbox/* ./curr_assignment
 
 clean:
 	rm -rf ./curr_assignment ./prev_assignments
