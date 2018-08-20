@@ -5,7 +5,6 @@ archive:
 
 setup:
 	mkdir ./curr_assignment
-	mkdir ./curr_assignment
 	mkdir ./prev_assignments
 
 pull:
